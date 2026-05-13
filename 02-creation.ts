@@ -17,7 +17,7 @@ interval(1000).pipe(take(3)).subscribe(v => console.log('interval:', v));       
 timer(3000, 1000).pipe(take(3)).subscribe(v => console.log('timer:', v));                 // wait 3s, then emit 0,1,2 every 1s
 
 // 3. DOM / external 
-fromEvent(document, 'click').subscribe(e => console.log('Clicked!', e));   
+fromEvent((document as any), 'click').subscribe(e => console.log('Clicked!', e));   
 // Actual JSON request
 ajax.getJSON('https://jsonplaceholder.typicode.com/users/1')
   .subscribe(res => console.log('User API response:', res));
