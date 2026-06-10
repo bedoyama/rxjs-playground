@@ -15,8 +15,16 @@
     "xhr2": "^0.2.1"
   },
   "devDependencies": {
-    "@types/node": "^25.7.0",
+    "@types/node": "^25.9.2",
     "ts-node": "^10.9.2",
     "typescript": "^6.0.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bedoyama/rxjs-playground.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bedoyama/rxjs-playground/issues"
+  },
+  "homepage": "https://github.com/bedoyama/rxjs-playground#readme"
 }

@@ -18,3 +18,6 @@ fromEvent((input as any), 'input').pipe(
 
 // Trigger simulation
 setTimeout(() => (input as any).emit('input', { target: { value: 'Bret' } }), 500);
+setTimeout(() => (input as any).emit('input', { target: { value: 'Delphine' } }), 530);
+setTimeout(() => (input as any).emit('input', { target: { value: 'Samantha' } }), 1500);
+
