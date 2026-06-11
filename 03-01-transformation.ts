@@ -1,5 +1,5 @@
 /**
- * 03-transformation.ts
+ * 03-01-transformation.ts
  *
  * PURPOSE: Core transformation operators — they take values from the source and
  * produce new values (or accumulated state) downstream.
@@ -17,7 +17,7 @@
  *   60
  *   100
  *
- * RUN: npx ts-node 03-transformation.ts
+ * RUN: npx ts-node 03-01-transformation.ts
  */
 
 import { of } from 'rxjs';

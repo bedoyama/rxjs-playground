@@ -1,5 +1,5 @@
 /**
- * 02-creation.ts
+ * 02-01-creation.ts
  *
  * PURPOSE: Show the most common "factory" / creation operators.
  * These are how you normally create Observables instead of using `new Observable(...)`.
@@ -34,7 +34,7 @@
  *   Caught an error: boom
  *   EMPTY completes immediately with no values
  *
- * RUN: npx ts-node 02-creation.ts
+ * RUN: npx ts-node 02-01-creation.ts
  */
 
 // ==================== POLYFILLS FOR NODE.JS ====================

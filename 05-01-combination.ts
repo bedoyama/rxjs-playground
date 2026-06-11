@@ -1,5 +1,5 @@
 /**
- * 05-combination.ts
+ * 05-01-combination.ts
  *
  * PURPOSE: combineLatest (and merge) — emit based on "latest from all".
  *
@@ -20,7 +20,7 @@
  *   combineLatest emits: [ 'User Click!', 0 ]  ← note: click value + the latest timer
  *   (later timer ticks would also cause combineLatest to re-emit with latest click)
  *
- * RUN: npx ts-node 05-combination.ts
+ * RUN: npx ts-node 05-01-combination.ts
  */
 
 import { merge, combineLatest, fromEvent, interval } from 'rxjs';

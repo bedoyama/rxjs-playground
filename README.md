@@ -12,7 +12,7 @@ npm install
 
 # Run any example directly (they are all self-contained)
 npx ts-node 01-core.ts
-npx ts-node 06-01-mergeMap.ts
+npx ts-node 06-02-mergeMap.ts
 npx ts-node 13-state-service.ts
 ```
 
@@ -26,10 +26,10 @@ Every file starts with a big comment block explaining:
 
 | Operator     | Concurrency     | Cancels previous? | Ignores new while busy? | Typical use case                     | File                  |
 |--------------|-----------------|-------------------|--------------------------|--------------------------------------|-----------------------|
-| `switchMap`  | 1 (latest)      | Yes               | No                       | Search-as-you-type, route params     | `06-flattening.ts`    |
-| `mergeMap`   | Many            | No                | No                       | Load many independent things in parallel | `06-01-mergeMap.ts` |
-| `concatMap`  | 1 (queued)      | No                | No                       | Sequential writes, ordered processing | `06-02-concatMap.ts` |
-| `exhaustMap` | 1 (block)       | No                | **Yes**                  | "Submit" buttons, prevent double-save | `06-03-exhaustMap.ts` |
+| `switchMap`  | 1 (latest)      | Yes               | No                       | Search-as-you-type, route params     | `06-01-flattening.ts` |
+| `mergeMap`   | Many            | No                | No                       | Load many independent things in parallel | `06-02-mergeMap.ts` |
+| `concatMap`  | 1 (queued)      | No                | No                       | Sequential writes, ordered processing | `06-03-concatMap.ts` |
+| `exhaustMap` | 1 (block)       | No                | **Yes**                  | "Submit" buttons, prevent double-save | `06-04-exhaustMap.ts` |
 
 **Rule of thumb** (memorize this):
 - 80% of the time you want `switchMap` for user-driven reads.
@@ -45,11 +45,11 @@ Every file starts with a big comment block explaining:
 - **[01-core.ts](01-core.ts)** — `new Observable(...)`, laziness, unicast by default, subscribe contract
 
 ### 2. Creation Operators (Entry Points)
-- **[02-creation.ts](02-creation.ts)** — `of`, `from` (array/promise), `interval`, `timer`, `fromEvent`, `ajax`, `throwError`, `EMPTY`
+- **[02-01-creation.ts](02-01-creation.ts)** — `of`, `from` (array/promise), `interval`, `timer`, `fromEvent`, `ajax`, `throwError`, `EMPTY`
 - **[02-02-creation-advanced.ts](02-02-creation-advanced.ts)** — `range`, `defer` (lazy per-subscriber), `iif`, `fromFetch`
 
 ### 3. Transformation Operators
-- **[03-transformation.ts](03-transformation.ts)** — `map`, `scan` (running accumulator)
+- **[03-01-transformation.ts](03-01-transformation.ts)** — `map`, `scan` (running accumulator)
 - **[03-02-transformation.ts](03-02-transformation.ts)** — `tap` (side effects), `startWith`, `pairwise`, `reduce` (final only), `delay`
 
 ### 4. Filtering, Rate Limiting & Flow Control
@@ -58,14 +58,14 @@ Every file starts with a big comment block explaining:
 - **[04-03-filtering.ts](04-03-filtering.ts)** — `take*`, `first`/`last`, `skip`, `takeUntil` (lifecycle), `throttleTime`/`auditTime`/`sampleTime`
 
 ### 5. Combination Operators (Joining Multiple Streams)
-- **[05-combination.ts](05-combination.ts)** — `merge` + `combineLatest` (live "latest from all")
+- **[05-01-combination.ts](05-01-combination.ts)** — `merge` + `combineLatest` (live "latest from all")
 - **[05-02-combination.ts](05-02-combination.ts)** — `forkJoin` (Promise.all), `withLatestFrom` (source + latest other), `race`
 
 ### 6. Higher-Order Mapping / Flattening (The Most Important Section)
-- **[06-flattening.ts](06-flattening.ts)** — `switchMap` (cancel previous) — typeahead search
-- **[06-01-mergeMap.ts](06-01-mergeMap.ts)** — concurrent inner subscriptions
-- **[06-02-concatMap.ts](06-02-concatMap.ts)** — sequential, order-preserving
-- **[06-03-exhaustMap.ts](06-03-exhaustMap.ts)** — ignore new source values while inner is busy
+- **[06-01-flattening.ts](06-01-flattening.ts)** — `switchMap` (cancel previous) — typeahead search
+- **[06-02-mergeMap.ts](06-02-mergeMap.ts)** — concurrent inner subscriptions
+- **[06-03-concatMap.ts](06-03-concatMap.ts)** — sequential, order-preserving
+- **[06-04-exhaustMap.ts](06-04-exhaustMap.ts)** — ignore new source values while inner is busy
 
 ### 7. Subjects & Multicasting (Hot vs Cold)
 - **[07-01-subjects.ts](07-01-subjects.ts)** — `Subject`, `BehaviorSubject`, `ReplaySubject` fundamentals + late subscriber behavior
@@ -131,7 +131,7 @@ Every file starts with a big comment block explaining:
 
 ## Learning Path Recommendation
 
-1. Start with `01-core.ts` → `02-creation.ts`
+1. Start with `01-core.ts` → `02-01-creation.ts`
 2. Master the four flattening files (`06-*`)
 3. Read `04-03-filtering.ts` for `takeUntil` (you will use this constantly)
 4. Study `11-mini-project.ts`, `12-polling.ts`, `13-state-service.ts` as complete patterns

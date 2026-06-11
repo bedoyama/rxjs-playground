@@ -1,5 +1,5 @@
 /**
- * 06-flattening.ts
+ * 06-01-flattening.ts
  *
  * PURPOSE: switchMap — the "cancel previous" higher-order mapping operator.
  * This is the single most important flattening operator for UI work.
@@ -12,7 +12,7 @@
  * Classic use case: type-ahead search. If the user types "Br" then quickly "Bret",
  * you don't want results for the stale "Br" query — you want to cancel it.
  *
- * COMPARISON (see also 06-01/02/03):
+ * COMPARISON (see also 06-02/03/04):
  *   switchMap   → cancel previous (most UI "read" operations)
  *   mergeMap    → run all concurrently (independent fire-and-forget)
  *   concatMap   → run one after another, preserve order
@@ -23,7 +23,7 @@
  *   (Samantha arrives later and gets its own request)
  *   Render Results: ... (for Bret or Samantha)
  *
- * RUN: npx ts-node 06-flattening.ts
+ * RUN: npx ts-node 06-01-flattening.ts
  */
 
 import { fromEvent } from 'rxjs';

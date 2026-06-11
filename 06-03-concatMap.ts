@@ -1,5 +1,5 @@
 /**
- * 06-02-concatMap.ts
+ * 06-03-concatMap.ts
  *
  * PURPOSE: concatMap — run inner Observables SEQUENTIALLY, preserving order.
  *
@@ -14,7 +14,7 @@
  *
  * Trade-off: slower total time because everything is queued.
  *
- * Same fake API calls as 06-01, but you will see them complete strictly in source order.
+ * Same fake API calls as 06-02 (mergeMap), but you will see them complete strictly in source order.
  *
  * EXPECTED:
  *   [concatMap] starting id=1 (slow)
@@ -25,7 +25,7 @@
  *   [concatMap] result id=3 → fast
  *   [concatMap complete]
  *
- * RUN: npx ts-node 06-02-concatMap.ts
+ * RUN: npx ts-node 06-03-concatMap.ts
  */
 
 import { from, of } from 'rxjs';

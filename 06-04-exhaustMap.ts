@@ -1,5 +1,5 @@
 /**
- * 06-03-exhaustMap.ts
+ * 06-04-exhaustMap.ts
  *
  * PURPOSE: exhaustMap — ignore new source values while an inner Observable is still active.
  *
@@ -21,7 +21,7 @@
  *   [exhaust] save complete
  *   (a click after completion will start a new one)
  *
- * RUN: npx ts-node 06-03-exhaustMap.ts
+ * RUN: npx ts-node 06-04-exhaustMap.ts
  */
 
 import { fromEvent, of } from 'rxjs';

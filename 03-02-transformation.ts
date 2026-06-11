@@ -49,7 +49,7 @@ of(10, 20, 30).pipe(
   pairwise()
 ).subscribe(pair => console.log('[pairwise]', pair));
 
-// 4. reduce — only emits once, on completion (compare to scan in 03-transformation.ts)
+// 4. reduce — only emits once, on completion (compare to scan in 03-01-transformation.ts)
 of(10, 20, 30).pipe(
   reduce((acc, v) => acc + v, 0)
 ).subscribe(total => console.log('[reduce] final total:', total));

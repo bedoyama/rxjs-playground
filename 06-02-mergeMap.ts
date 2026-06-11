@@ -1,5 +1,5 @@
 /**
- * 06-01-mergeMap.ts
+ * 06-02-mergeMap.ts
  *
  * PURPOSE: mergeMap (aka flatMap) — run inner Observables CONCURRENTLY.
  *
@@ -25,7 +25,7 @@
  *   [mergeMap] result id=1 → slow
  *   [mergeMap complete]
  *
- * RUN: npx ts-node 06-01-mergeMap.ts
+ * RUN: npx ts-node 06-02-mergeMap.ts
  */
 
 import { from, of } from 'rxjs';
