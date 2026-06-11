@@ -47,6 +47,7 @@ Every file starts with a big comment block explaining:
 ### 2. Creation Operators (Entry Points)
 - **[02-01-creation.ts](02-01-creation.ts)** — `of`, `from` (array/promise), `interval`, `timer`, `fromEvent`, `ajax`, `throwError`, `EMPTY`
 - **[02-02-creation-advanced.ts](02-02-creation-advanced.ts)** — `range`, `defer` (lazy per-subscriber), `iif`, `fromFetch`
+- **[02-03-rest-api.ts](02-03-rest-api.ts)** — **Dedicated REST API calls**: clean GET single resource + collection using `ajax.getJSON` and modern `fromFetch`, with response typing and `catchError` handling
 
 ### 3. Transformation Operators
 - **[03-01-transformation.ts](03-01-transformation.ts)** — `map`, `scan` (running accumulator)

@@ -10,7 +10,7 @@
  * - interval(ms)           → emit 0,1,2... forever every ms (cold)
  * - timer(delay, period?)  → emit after delay, then optionally repeat
  * - fromEvent(target, name)→ bridge DOM / EventEmitter / Node events
- * - ajax.getJSON(url)      → simple HTTP (from 'rxjs/ajax')
+ * - ajax.getJSON(url)      → simple HTTP (from 'rxjs/ajax') — see 02-03-rest-api.ts for focused REST patterns
  * - throwError(() => err)  → immediately error
  * - EMPTY                  → immediately complete with no values
  *
