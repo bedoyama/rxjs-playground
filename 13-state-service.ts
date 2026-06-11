@@ -1,3 +1,26 @@
+/**
+ * 13-state-service.ts
+ *
+ * PURPOSE: The "lightweight state service" pattern (no NgRx / Redux needed for many apps).
+ *
+ * Core ideas:
+ * - One private BehaviorSubject holds the single source of truth.
+ * - Expose a read-only `state$` (asObservable) so consumers cannot .next() directly.
+ * - Derive "sliced" observables (theme$, user$, etc.) with map + distinctUntilChanged.
+ *   This gives you memoized, efficient views that only emit on actual change.
+ * - All mutations go through explicit methods (toggleTheme, setUser, etc.).
+ *   This keeps writes controlled and easy to audit / log / test.
+ *
+ * This pattern scales surprisingly far before you need a full state machine.
+ *
+ * EXPECTED:
+ *   Current Theme is now: light
+ *   Current Theme is now: dark
+ *   Current Theme is now: light
+ *
+ * RUN: npx ts-node 13-state-service.ts
+ */
+
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, distinctUntilChanged } from 'rxjs/operators';
 

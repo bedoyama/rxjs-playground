@@ -1,3 +1,25 @@
+/**
+ * 11-mini-project.ts
+ *
+ * PURPOSE: The "canonical" real-world RxJS UI pattern put together:
+ *   debounce + filter + switchMap + catchError (inside) + mapping result.
+ *
+ * This is what 80% of "search / autocomplete / typeahead" features look like.
+ *
+ * CRITICAL LESSONS INSIDE:
+ * - debounceTime before the async work
+ * - filter to avoid useless short queries
+ * - switchMap so fast typing doesn't pile up requests
+ * - catchError INSIDE the inner observable returned by switchMap
+ *     → a single failed search does not kill the whole input stream
+ *
+ * EXPECTED:
+ *   --- Search Results ---
+ *   [ array of github users matching 'ngrx' ]
+ *
+ * RUN: npx ts-node 11-mini-project.ts
+ */
+
 import { fromEvent, of } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 import { debounceTime, map, filter, switchMap, catchError } from 'rxjs/operators';

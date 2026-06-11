@@ -1,3 +1,30 @@
+/**
+ * 07-02-subjects.ts
+ *
+ * PURPOSE: Realistic composition — using Subjects + BehaviorSubject + ReplaySubject
+ * together with switchMap for a "search with state + late joiners" scenario.
+ *
+ * Patterns shown:
+ * - Raw input → Subject (or you can use the event stream directly)
+ * - BehaviorSubject as "current query" state holder (any subscriber always sees latest)
+ * - ReplaySubject to let "late" UI components (e.g. a second tab or debug panel)
+ *   receive the last few results without re-triggering the network.
+ *
+ * This is the kind of pattern you see in real "smart search" or "global state + derived views".
+ *
+ * EXPECTED (high level):
+ *   🔍 Searching for: Bret
+ *   ✅ Results: ...
+ *   🔍 Searching for: Samantha   ← previous request cancelled by switchMap
+ *   (empty query is filtered)
+ *   🔍 Searching for: Antonette
+ *   ...
+ *   Late subscriber to results:
+ *   Late result replay: ... (the last 3)
+ *
+ * RUN: npx ts-node 07-02-subjects.ts
+ */
+
 import { fromEvent, Subject, BehaviorSubject, ReplaySubject } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 import { debounceTime, map, switchMap, tap } from 'rxjs/operators';

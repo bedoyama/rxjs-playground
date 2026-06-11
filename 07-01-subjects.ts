@@ -1,3 +1,51 @@
+/**
+ * 07-01-subjects.ts
+ *
+ * PURPOSE: The three most important multicast primitives.
+ *
+ * Subject
+ *   - "Pure" multicast. New subscribers only receive FUTURE values.
+ *   - No replay of history.
+ *
+ * BehaviorSubject<T>(initialValue)
+ *   - Always has a "current value".
+ *   - Every new subscriber immediately receives the current value (then future ones).
+ *   - Ideal for "state" or "current selection".
+ *
+ * ReplaySubject(bufferSize)
+ *   - Remembers the last N values and replays them to late subscribers.
+ *   - Great for "last few search results", "recent events", etc.
+ *
+ * KEY DIFFERENCE FROM NORMAL OBSERVABLES:
+ *   Normal Observables = unicast (each sub gets its own producer run).
+ *   Subjects = multicast (one producer, many consumers).
+ *
+ * EXPECTED:
+ *   === Subject (only future values) ===
+ *   Subject A: First
+ *   Subject B: First
+ *   Subject A: Second
+ *   Subject B: Second
+ *   Subject C (late): Second     ← missed "First"
+ *
+ *   === BehaviorSubject ...
+ *   BS A: initial-state
+ *   BS B: initial-state
+ *   BS A: loading...
+ *   ...
+ *   BS C (late): results-found   ← still gets the latest
+ *
+ *   === ReplaySubject ...
+ *   RS A: search-2
+ *   RS A: search-3
+ *   RS B (late): search-2
+ *   RS B (late): search-3
+ *   RS A: search-4
+ *   RS B (late): search-4
+ *
+ * RUN: npx ts-node 07-01-subjects.ts
+ */
+
 import { fromEvent, Subject, BehaviorSubject, ReplaySubject } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 import { debounceTime, map, switchMap, tap } from 'rxjs/operators';
